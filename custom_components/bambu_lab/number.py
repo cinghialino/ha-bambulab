@@ -43,15 +43,15 @@ NUMBERS: tuple[BambuLabNumberEntityDescription, ...] = (
         set_value_fn=lambda device, value: device.temperature.set_target_temp(TempEnum.NOZZLE, value)
     ),
     BambuLabNumberEntityDescription(
-        key="target_bed_temperature",
-        translation_key="target_bed_temperature",
+        key="bed_target_temperature",
+        translation_key="bed_target_temperature",
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         device_class=NumberDeviceClass.TEMPERATURE,
         mode=NumberMode.BOX,
         native_min_value=0,
         native_max_value=120,  # TODO: Determine by actual printer model and voltage
         native_step=1,
-        value_fn=lambda device: device.temperature.target_bed_temp,
+        value_fn=lambda device: device.temperature.bed_target_temp,
         set_value_fn=lambda device, value: device.temperature.set_target_temp(TempEnum.HEATBED, value)
     ),
 )
